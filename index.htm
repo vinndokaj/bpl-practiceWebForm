@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Haidar's Favorite Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div>
+  <h1>Web Form</h1>
+
+  <form name="personalInfo" onsubmit="return validateForm()" method ="post">
+    <fieldset>
+      <legend>Personal Information</legend>
+      <label for="name">Please enter your name:</label><br>
+      <input type="text" id="name" name="name"><br>
+
+      <label>Please select a gender:</label><br>
+      <input type="radio" id="male" name="gender" value="male">
+      <label for="male">Male</label><br>
+      <input type="radio" id="female" name="gender" value="female">
+      <label for="female">Female</label><br>
+      <input type="radio" id="other" name="gender" value="other">
+      <label for="other">Other</label><br>
+
+      <label for="email">Please enter your email address:</label><br>
+      <input type="text" id="email" name="email"><br>
+
+      <label>Is easy?</label><br>
+      <input type="radio" id="yes" name="iseasy" value="true">
+      <label for="yes">Yes</label><br>
+      <input type="radio" id="no" name="iseasy" value="false">
+      <label for="no">No</label><br>
+
+      <input type="submit" value="Submit">
+    </fieldset>
+  </form>
+</div>
+<script src="validateForm.js"></script>
+
+</body>
+</html>
