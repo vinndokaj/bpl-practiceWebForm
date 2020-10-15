@@ -4,18 +4,20 @@ function validateForm(){
   var email = document.forms.personalInfo.email;
   var iseasy = document.forms.personalInfo.iseasy;
   var data = [name, gender, email, iseasy];
+  var forBlob = "";
 
   var i;
   var len = data.length;
   for(i = 0; i < len; i++){
     if(validateAux(data[i])){
-      console.log("IN THE IF: " + i);
       return false;
     }
+    forBlob += data[i].value + ",";
   }
+  console.log(forBlob);
 
   //insert data into blob type for csv insertion
-  const dataBlob = new Blob([data.toString()],{type:'text/csv'});
+  const dataBlob = new Blob([forBlob],{type:'text/csv'});
 
   //creating tag to download csv
   let tag = document.createElement("a");
