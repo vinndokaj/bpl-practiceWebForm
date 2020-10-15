@@ -15,7 +15,7 @@ legend {
   text-align: center;
 }
 
-input[type=text]{
+input[type=text], input[type=email]{
   width: 30%;
   padding: 6px 10px;
   margin: 4px 0;
