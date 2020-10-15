@@ -1,31 +1,29 @@
 function validateForm(){
-  var name = document.forms.personalInfo.name.value;
-  var gender = document.forms.personalInfo.gender.value;
-  var email = document.forms.personalInfo.email.value;
-  var iseasy = document.forms.personalInfo.iseasy.value;
-  var data = name + "," + gender + "," + email + "," + iseasy;;
+  var name = document.forms.personalInfo.name;
+  var gender = document.forms.personalInfo.gender;
+  var email = document.forms.personalInfo.email;
+  var iseasy = document.forms.personalInfo.iseasy;
+  var data = name.value + "," + gender.value + "," + email.value + "," + iseasy.value;
   var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
   //validate inputs before storing any data
-  if(name == ""){
-    alert("Please fill out your name.");
-    name.focus();
+  if(name.value == ""){
+    document.getElementById("name").style.borderColor = 'red';
     return false;
   }
 
-  if (gender == ""){
-    alert("Please choose your gender.")
+  if (gender.value == ""){
+    document.getElementById("gender").style.color = 'red';
     return false;
   }
 
-  if(!email.match(mailformat)){
-    alert("Please enter a valid email address.");
-    email.focus();
+  if(!email.value.match(mailformat)){
+    document.getElementById("email").style.borderColor = 'red';
     return false;
   }
 
-  if(iseasy == ""){
-    alert("Please choose whether or not it was easy.");
+  if(iseasy.value == ""){
+    document.getElementById("iseasy").style.color = 'red';
     return false;
   }
 
