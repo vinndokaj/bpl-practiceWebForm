@@ -10,6 +10,7 @@ function validateForm(){
   var len = data.length;
   for(i = 0; i < len; i++){
     if(validateAux(data[i])){
+      alert("Please complete form.");
       return false;
     }
     forBlob += data[i].value + ",";
