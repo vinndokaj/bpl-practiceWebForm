@@ -1,6 +1,6 @@
 //Validates webform for correct inputs and marks inputs in red if required
 function validateForm(){
-  testValidateAux();
+  //testValidateAux();
 
   var forBlob = "";
 
@@ -11,6 +11,7 @@ function validateForm(){
     {key:'iseasy', error:{color:'red',element:'color'}},
   ];
 
+  //checks form for proper inputs
   var i;
   for(i = 0; i < data.length; i++){
     if(!validateAux(document.forms.personalInfo[data[i].key])){
@@ -42,7 +43,7 @@ function validateForm(){
 
 } //end validateForm
 
-//Returns
+//Returns whether or not any input of the form is valid
 function validateAux(input){
   var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   var val = input.value.trim();
@@ -53,6 +54,7 @@ function validateAux(input){
 
 //Unit Test for validateAux
 function testValidateAux(){
+  //Cases to be tested
   const cases = [
     {input:{name:{value:"",type:""}, gender:{value:"",type:""}, email:{value:"",type:"email"}, iseasy:{value:"",type:""}},
      output:{name:false, gender:false, email:false, iseasy:false}},
@@ -73,6 +75,8 @@ function testValidateAux(){
     {input:{name:{value:"Ronnie Coleman",type:""}, gender:{value:"Male",type:""}, email:{value:"yeah@buddy.com",type:"email"}, iseasy:{value:"true",type:""}},
      output:{name:true, gender:true, email:true, iseasy:true}},
   ]
+
+  //goes through test cases and checks for correct output
   console.log("Test cases:");
   var i;
   for(i = 0; i < cases.length; i++){
