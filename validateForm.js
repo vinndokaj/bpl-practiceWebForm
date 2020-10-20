@@ -1,21 +1,22 @@
 function validateForm(){
-  var name = document.forms.personalInfo.name;
-  var gender = document.forms.personalInfo.gender;
-  var email = document.forms.personalInfo.email;
-  var iseasy = document.forms.personalInfo.iseasy;
-  var data = [name, gender, email, iseasy];
   var forBlob = "";
 
+  const data = [
+    {key:'name', error:{color:'red',element:'borderColor'}},
+    {key:'gender', error:{color:'red',element:'color'}},
+    {key:'email', error:{color:'red',element:'borderColor'}},
+    {key:'iseasy', error:{color:'red',element:'color'}},
+  ];
+
   var i;
-  var len = data.length;
-  for(i = 0; i < len; i++){
-    if(validateAux(data[i])){
-      alert("Please complete form.");
+  for(i = 0; i < data.length; i++){
+    if(validateAux(document.forms.personalInfo[data[i].key])){
+      document.getElementById(data[i].key).style[data[i].error.element] = data[i].error.color;
       return false;
     }
-    forBlob += data[i].value + ",";
+    forBlob += document.forms.personalInfo[data[i].key].value + ",";
   }
-  console.log(forBlob);
+  //console.log(forBlob);
 
   //insert data into blob type for csv insertion
   const dataBlob = new Blob([forBlob],{type:'text/csv'});
@@ -38,8 +39,10 @@ function validateForm(){
 
 }
 
-function validateAux(val){
+function validateAux(input){
   var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (val.value == "") {return true;}
-  if ((val.type == 'email')  && (!(val.value.match(mailformat)))) {return true;}
+  var val = input.value.trim();
+  if (val == "") {return true;}
+  if ((input.type == 'email')  && (!(val.match(mailformat)))) {return true;}
+  return false;
 }
